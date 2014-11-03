@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Golf planner</title>
+    <link href="bower_components/metro-bootstrap/dist/css/metro-bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <section>
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Golf Planner</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav" data-bind="visible: principal.isAuthenticated">
+                            <li><a href="#courses">Golf Courses</a></li>
+                            <li><a href="#flights">Booked Flights</a></li>
+                            <li><a href="#buddies">Golf buddies</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#" data-bind="visible: !principal.isAuthenticated(), click: signIn">Sign in</a></li>
+                            <li><div data-bind="visible: principal.isAuthenticated() && principal.identity.pictureUrl" class="picture"><img data-bind="attr: { src: principal.identity.pictureUrl }" /></div></li>
+                            <li class="dropdown" data-bind="visible: principal.isAuthenticated">
+                                <a class=" dropdown-toggle" data-toggle="dropdown">
+                                    <span data-bind="text: principal.identity.displayName"></span> <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#account">Account</a></li>
+                                    <li class="divider"></li>
+                                    <li><a data-bind="click: signOut">Sign out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav> 
+            <section style="text-align:center;vertical-align:middle" data-bind="visible: !principal.isAuthenticated()">
+                <img style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);" src="Content/Golf_ball_3.jpg" />
+            </section>
+        </section>
+        <section style="margin: 60px 30px 0 30px;" data-bind="visible: principal.isAuthenticated">
+            <section data-bind="visible: currentView() == 'account'">
+                <h1 data-bind="text: account.displayName"></h1>
+                <!-- ko foreach: account.accountProviders -->
+                <div class="well">
+                    <div>
+                        <h2 data-bind="visible: !providerImageUrl, text: displayName"></h2>
+                        <div style="display:inline-block;max-height:8em;" data-bind="visible: providerImageUrl">
+                            <img style="max-height:6em;" data-bind="attr: { src: providerImageUrl }" />
+                        </div>
+
+                        <div style="margin-top:1em;">
+                            <a class="btn btn-primary" data-bind="click: $root.addAccount">add account</a>
+                        </div>
+                    </div>
+                    <!-- ko foreach: $data.accounts -->
+                    <div class="well" style="margin-top:1em;margin-bottom:0">
+                        <div>
+                            <div style="display:inline-block">
+                                <img data-bind="attr: { src: pictureUrl }" />
+                            </div>
+                            <div style="display:inline-block;vertical-align:top;margin-left: 2em;">
+                                <h3 style="margin-top:0" data-bind="text: displayName"></h3>
+                                <div data-bind="text: emailAddress"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </section>
+            <section data-bind="visible: currentView() == 'buddies'">
+                <!-- ko foreach: buddies-->
+                <div class="well">
+                    <h2 data-bind="text: displayName"></h2>
+                    <div>
+                        <div style="display:inline-block">
+                            <img data-bind="attr:{ src: largePictures[0] }" />
+                        </div>
+                        <div style="display:inline-block;vertical-align:top;margin-left: 2em;">
+                            <div>HCP: 34</div>
+                            <div>Home Club: Golf Puyenbroek</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </section>
+            <section data-bind="visible: currentView() == 'courses'">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Course</th>
+                            <th>City</th>
+                            <th>e-mail address</th>
+                            <th>website</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: courses">
+                        <tr>
+                            <td data-bind="text: id"></td>
+                            <td data-bind="text: title"></td>
+                            <td data-bind="text: city"></td>
+                            <td data-bind="text: email"></td>
+                            <td><a data-bind="attr: { href: website }, text: website" target="_blank"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section data-bind="visible: currentView() == 'flights'">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Course</th>
+                            <th>City</th>
+                            <th>e-mail address</th>
+                            <th>website</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: flights">
+                        <tr>
+                            <td data-bind="text: date"></td>
+                            <td data-bind="text: title"></td>
+                            <td data-bind="text: city"></td>
+                            <td data-bind="text: email"></td>
+                            <td><a data-bind="attr: { href: website }, text: website" target="_blank"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="bower_components/theidentityhub-jquery/dist/jquery.theidentityhub.min.js"></script>
+    <script src="app.js"></script>
+    <script src="viewmodels/viewmodel.js"></script>
+    <script>
+        $(function () {
+            app.run();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "theidentityhub-jquery",
+  "authors": [
+    "The Identity Hub <support@theidentityhub.com>"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.x"
+  },
+  "description": "JavaScript SDK for The Identity Hub. The Identity Hub makes it easy to connect your app to all major identity providers like Microsoft, Facebook, Google, Twitter, Linked In and more. For more information see https://www.theidentityhub.com",
+  "main": "theidentityhub-jquery.min.js",
+  "keywords": [
+    "identity",
+    "security",
+    "Identity & Access management",
+    "angular"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.theidentityhub.com",
+  "_release": "ab293a42d2",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ab293a42d286fe4b81180f578ceb6c5e6b31c2f6"
+  },
+  "_source": "git://github.com/TheIdentityHub/theidentityhub-jquery.git",
+  "_target": "*",
+  "_originalSource": "theidentityhub-jquery",
+  "_direct": true
+}

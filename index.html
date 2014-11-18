@@ -23,6 +23,7 @@
                             <li><a href="#courses">Golf Courses</a></li>
                             <li><a href="#flights">Booked Flights</a></li>
                             <li><a href="#buddies">Golf buddies</a></li>
+                            <li data-bind ="visible: principal.isInRole('Marshal') === true"><a href=" #">Golf rules</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#" data-bind="visible: !principal.isAuthenticated(), click: signIn">Sign in</a></li>
@@ -40,7 +41,7 @@
                         </ul>
                     </div>
                 </div>
-            </nav> 
+            </nav>
             <section style="text-align:center;vertical-align:middle" data-bind="visible: !principal.isAuthenticated()">
                 <img style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);" src="Content/Golf_ball_3.jpg" />
             </section>

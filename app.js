@@ -32,9 +32,9 @@ var app = (function () {
             });
 
             $.identityService.config({
-                baseUrl: "https://www.theidentityhub.com/[YOUR_URL_SEGMENT]/",
-                clientId: "[YOUR_CLIENT_ID]",
-                redirectUri: "[YOUR_REDIRECT_URI]",
+                baseUrl: "https://www.theidentityhub.com/[YOUR URL SEGMENT]/",
+                clientId: "[YOUR CLIENT ID]",
+                redirectUri: "[YOUR APP BASE URL]/callback.html",
                 popup: true,
                 manualSignIn: true
             }).then(function () {

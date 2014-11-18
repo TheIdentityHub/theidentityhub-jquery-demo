@@ -21,6 +21,9 @@
             identity: {
                 displayName: ko.observable(''),
                 pictureUrl: ko.observable('')
+            },
+            isInRole: function (role) {
+                return $.identityService.principal.isInRole(role);
             }
         }
     };

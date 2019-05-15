@@ -27,7 +27,7 @@ Change the configuration as follows
 3. Replace [YOUR APP BASE URL] with the base url of your site. Configure the redirect uri in your OAUth 2.0 App parameters at The Identity Hub.
 4. Navigate to [YOUR APP BASE URL] the index.html page
 
-If you do not have already created an App see https://www.theidentityhub.com/hub/Documentation/#CreateAnApp.
+If you do not have already created an App see https://docs.theidentityhub.com/doc/Apps/Create-an-App.html.
 
 
 
